@@ -1,5 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { HYDRATE } from "next-redux-wrapper";
+import { RootState } from './index'
+import {
+  createDraftSafeSelector,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit'
+import { HYDRATE } from 'next-redux-wrapper'
 
 interface InitialState {
   number: number
@@ -21,23 +26,23 @@ const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    increase(state, action) {
+    increase(state, action: PayloadAction<number>) {
       state.number = state.number + action.payload
     },
-    decrease(state, action) {
+    decrease(state, action: PayloadAction<number>) {
       state.number = state.number - action.payload
     },
     totalCountDecrease(state) {
       state.noticount = state.noticount - 1
     },
-    setNotiListCount(state, action: { payload: number }) {
+    setNotiListCount(state, action: PayloadAction<number>) {
       state.noticount = action.payload
     },
-    setSign_company(state, action: { payload: string }) {
+    setSign_company(state, action: PayloadAction<string>) {
       state.sign_company = action.payload
     },
   },
- /*  extraReducers: builder =>
+  /*  extraReducers: builder =>
     builder
       .addCase(increaseAsync.pending, (state, action) => {})
       .addCase(increaseAsync.fulfilled, (state, action) => {})
@@ -59,3 +64,22 @@ const counterSlice = createSlice({
 })
 
 export default counterSlice
+
+const numSelect = (state: RootState) => state.counter.number
+const noticountSelect = (state: RootState) => state.counter.noticount
+
+export const numSelector = createDraftSafeSelector(numSelect, state => state)
+
+export const noticountSelector = createDraftSafeSelector(
+  noticountSelect,
+  state => state,
+)
+
+export const allCounterStateSelector = createDraftSafeSelector(
+  numSelect,
+  noticountSelect,
+  (num, noticount) => ({
+    num,
+    noti: noticount,
+  }),
+)

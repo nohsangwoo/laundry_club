@@ -6,7 +6,7 @@ import storage from 'redux-persist/lib/storage'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { createWrapper, MakeStore } from 'next-redux-wrapper'
 
-export const customHistory = createBrowserHistory()
+// export const customHistory = createBrowserHistory()
 
 const persistConfig = {
   key: 'root',
