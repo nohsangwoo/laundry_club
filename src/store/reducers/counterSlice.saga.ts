@@ -1,10 +1,10 @@
-import { RootState } from './index'
 import {
   createDraftSafeSelector,
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
+import { RootState } from '../store'
 
 interface InitialState {
   number: number

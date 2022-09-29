@@ -7,7 +7,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  userInfo: undefined,
+  userInfo: [],
   isLogin: false,
   isConfirmed: false,
   isVerify: false,

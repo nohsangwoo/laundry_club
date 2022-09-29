@@ -8,24 +8,26 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import '../styles/globals.css'
 import { Provider as ReduxProvider } from 'react-redux'
-import store from '@src/store/store'
+import store, { wrapper } from '@src/store/store'
+import type { AppProps } from 'next/app'
+
 const persistor = persistStore(store)
 
 function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReduxProvider store={store}>
+      <Hydrate state={pageProps.dehydratedState}>
+        {/* <ReduxProvider store={store}> */}
         <PersistGate loading={null} persistor={persistor}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </Hydrate>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
           <ReactQueryDevtools initialIsOpen={false} />
         </PersistGate>
-      </ReduxProvider>
+        {/* </ReduxProvider> */}
+      </Hydrate>
     </QueryClientProvider>
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
