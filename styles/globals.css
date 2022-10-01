@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,20 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.blog-post-content h1 {
+  @apply mb-5 text-red-500;
+}
+
+.blog-post-content p {
+  @apply mb-1 text-gray-500;
+}
+
+.blog-post-content ul {
+  @apply list-disc pl-10;
+}
+
+.error-message {
+  @apply bg-red-100 text-red-500;
 }
