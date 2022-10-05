@@ -82,6 +82,8 @@ yarn add @mui/icons-material @mui/material @mui/styles @mui/x-date-pickers
 
 ## apply three js
 
+- ref: https://threejs.org/
+
 - ref: https://github.com/pmndrs/react-three-fiber
 
 ```
@@ -93,3 +95,6 @@ yarn add three @react-three/fiber
 ```
 yarn add @react-three/drei
 ```
+
+- 3d 모델
+- ref: https://sketchfab.com/
