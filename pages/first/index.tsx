@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef, useState } from 'react'
+import React, { CSSProperties, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { style } from '@mui/system'
 
@@ -7,7 +7,11 @@ const First = () => {
   const [penumbra, setPenumbra] = useState(1)
 
   function Box(props) {
+    const [hovered, setHovered] = useState(false)
     const ref = useRef<any>()
+    useEffect(() => {
+      console.log('hovered: ', hovered)
+    }, [hovered])
 
     useFrame(() => {
       let rotation = ref.current.rotation
@@ -18,7 +22,15 @@ const First = () => {
     })
 
     return (
-      <mesh ref={ref} {...props} scale={1}>
+      <mesh
+        // hover랑 똑같은 기능 대신 over는 마우스를 객체에 올려뒀을 때
+        onPointerOver={e => setHovered(true)}
+        // out은 마우스를 객체에서 떼었을 때(마우스가 객체 밖으로 나갔을 때)
+        onPointerOut={e => setHovered(false)}
+        ref={ref}
+        {...props}
+        scale={hovered ? 2 : 1.5}
+      >
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={'orange'} />
       </mesh>
@@ -29,7 +41,7 @@ const First = () => {
     <div style={{ background: '#1c1c' }}>
       <Canvas dpr={[1, 2]}>
         <ambientLight intensity={intensity} />
-        <spotLight position={[10, 10, 10]} angle={0.5} penumbra={1} />
+        <spotLight position={[10, 10, 10]} angle={0.5} penumbra={penumbra} />
         <pointLight position={[-10, -10, -10]} />
         <Box position={[-4.2, 0, 0]} />
         <Box position={[4.2, 0, 0]} />
