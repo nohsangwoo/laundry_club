@@ -32,14 +32,17 @@ const First = () => {
         scale={hovered ? 2 : 1.5}
       >
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={'orange'} />
+        <meshStandardMaterial color={hovered ? 'orange' : 'red'} />
       </mesh>
     )
   }
 
   return (
-    <div style={{ background: '#1c1c' }}>
-      <Canvas dpr={[1, 2]}>
+    <div>
+      <h1 className='text-black border-indigo-400 text-xl'>
+        My first website
+      </h1>
+      <Canvas dpr={[1, 2]} style={styles.canvas}>
         <ambientLight intensity={intensity} />
         <spotLight position={[10, 10, 10]} angle={0.5} penumbra={penumbra} />
         <pointLight position={[-10, -10, -10]} />
@@ -88,9 +91,7 @@ const First = () => {
 }
 
 type StylesType = {
-  buttonsContainer: CSSProperties
-  button: CSSProperties
-  buttonWrapper: CSSProperties
+  [key: string]: CSSProperties
 }
 const styles: StylesType = {
   buttonsContainer: {
@@ -116,12 +117,16 @@ const styles: StylesType = {
     borderRadius: '10px',
     outline: 'none',
     cursor: 'pointer',
-    color: 'white',
+    color: 'black',
     fontSize: '1.2rem',
     fontWeight: 'bold',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  canvas: {
+    height: '500px',
+    border: '5px solid yellow',
   },
 }
 
