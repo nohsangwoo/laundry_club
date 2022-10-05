@@ -32,9 +32,9 @@ function MyApp({ Component, pageProps }) {
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <PersistGate loading={null} persistor={persistor}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
+              {/* <Layout> */}
+              <Component {...pageProps} />
+              {/* </Layout> */}
               <ReactQueryDevtools initialIsOpen={false} />
             </PersistGate>
           </Hydrate>

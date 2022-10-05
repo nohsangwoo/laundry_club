@@ -5,7 +5,7 @@ import React, { ForwardedRef, forwardRef, useEffect } from 'react'
 interface Props {
   test: any
 }
-const Children1 = forwardRef(({ test }: Props, ref: ForwardedRef<string>) => {
+const Children1 = forwardRef(({ test }: Props, ref) => {
   const dispatch = useAppDispatch()
   const number = useAppSelector(state => state.counter.number)
   const [count, setCount] = React.useState(0)
@@ -20,7 +20,6 @@ const Children1 = forwardRef(({ test }: Props, ref: ForwardedRef<string>) => {
       <div>inside title: Children1 {number}</div>
       <button
         onClick={() => {
-          // @ts-ignore
           ref.current = count + 1
           test.p1 = count + 1
           increase(1)

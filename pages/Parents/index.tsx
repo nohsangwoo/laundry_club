@@ -17,7 +17,8 @@ interface withInjectorProps {
 type Props = ownProps & ownState & withInjectorProps
 
 class Parents extends Component<Props, ownState> {
-  private numberRef: Ref<string> = createRef<string>()
+  // private numberRef: Ref<number> = createRef<number>()
+  private numberRef = createRef()
   private test = {
     p1: 0,
   }
@@ -28,7 +29,9 @@ class Parents extends Component<Props, ownState> {
       newNumber: 0,
     }
   }
-
+  componentDidMount(): void {
+    this.numberRef.current = 0
+  }
   componentDidUpdate(
     prevProps: Readonly<Props>,
     prevState: Readonly<ownState>,
@@ -64,7 +67,7 @@ class Parents extends Component<Props, ownState> {
           button for rerender
         </button>
         <div>test.p1: {this.test.p1}</div>
-        <div>numberRef.p1: {this.numberRef.current}</div>
+        <div>numberRef.p1: {this.numberRef.current ?? 0}</div>
       </div>
     )
   }
