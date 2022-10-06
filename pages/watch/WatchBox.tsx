@@ -10,7 +10,7 @@ const WatchBox = () => {
       <div className="flex w-[50%] flex-col items-center justify-center">
         watch Area
       </div>
-      <div>empty box</div>
+      <div>emptfy box</div>
     </div>
   )
 }
