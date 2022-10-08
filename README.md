@@ -81,6 +81,7 @@ yarn add -D tailwindcss postcss autoprefixer
 yarn add @mui/icons-material @mui/material @mui/styles @mui/x-date-pickers
 
 ## apply three js
+파일 형식이 GLTF여야 한다.(glb...)
 
 - ref: https://threejs.org/
 

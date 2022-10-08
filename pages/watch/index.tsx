@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Nav from './Nav'
 import WatchBox from './WatchBox'
 
 const Watch = () => {
   return (
     <div>
-      <Nav />
-      <WatchBox />
+      <Suspense fallback={null}>
+        <Nav />
+        <WatchBox />
+      </Suspense>
     </div>
   )
 }
