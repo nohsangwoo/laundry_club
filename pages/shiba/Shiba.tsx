@@ -12,10 +12,12 @@ const Annotation = styled.div`
 export default function Watch(props) {
   const ref = useRef()
 
-  const { nodes, materials } = useGLTF('/models/watch-v1.glb')
+  // const { nodes, materials } = useGLTF('/models/shiba.glb')
+  const { nodes, materials } = useGLTF('/models/shiba/scene.gltf')
 
   console.log('nodes', nodes)
   console.log('materials', materials)
+  console.log('materials.default', materials.default)
   useFrame(state => {
     const t = state.clock.getElapsedTime()
     ref.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8
@@ -39,8 +41,8 @@ export default function Watch(props) {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object006_watch_0.geometry as BufferGeometry}
-          material={materials.watch}
+          geometry={nodes.Object001_default_0.geometry as BufferGeometry}
+          material={materials.default}
         />
       </group>
     </>
