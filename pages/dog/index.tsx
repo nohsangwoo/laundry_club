@@ -1,4 +1,4 @@
-import { dehydrate, useQuery } from 'react-query'
+import { dehydrate, useQuery } from '@tanstack/react-query'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Grid, Card, Image, Text, Title } from '@mantine/core'

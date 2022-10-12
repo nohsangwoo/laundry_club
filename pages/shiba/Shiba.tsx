@@ -20,9 +20,13 @@ export default function Watch(props) {
   console.log('materials.default', materials.default)
   useFrame(state => {
     const t = state.clock.getElapsedTime()
+    // @ts-ignore
     ref.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8
+    // @ts-ignore
     ref.current.rotation.y = Math.sin(t / 4) / 8
+    // @ts-ignore
     ref.current.rotation.z = (1 + Math.sin(t / 1.5)) / 20
+    // @ts-ignore
     ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10
   })
   return (
@@ -41,6 +45,7 @@ export default function Watch(props) {
         <mesh
           castShadow
           receiveShadow
+          // @ts-ignore
           geometry={nodes.Object001_default_0.geometry as BufferGeometry}
           material={materials.default}
         />

@@ -20,6 +20,7 @@ const Children1 = forwardRef(({ test }: Props, ref) => {
       <div>inside title: Children1 {number}</div>
       <button
         onClick={() => {
+          // @ts-ignore
           ref.current = count + 1
           test.p1 = count + 1
           increase(1)

@@ -30,6 +30,7 @@ class Parents extends Component<Props, ownState> {
     }
   }
   componentDidMount(): void {
+    // @ts-ignore
     this.numberRef.current = 0
   }
   componentDidUpdate(
@@ -67,7 +68,6 @@ class Parents extends Component<Props, ownState> {
           button for rerender
         </button>
         <div>test.p1: {this.test.p1}</div>
-        <div>numberRef.p1: {this.numberRef.current ?? 0}</div>
       </div>
     )
   }

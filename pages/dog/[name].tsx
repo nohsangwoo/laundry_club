@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { dehydrate, useQuery } from 'react-query'
+import { dehydrate, useQuery } from '@tanstack/react-query'
 import { Grid, Text, Button, Title, Image } from '@mantine/core'
 
 import { queryClient, dogByName } from '../../src/api'
